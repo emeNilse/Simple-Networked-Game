@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class PlayerNetworkLaps : NetworkBehaviour
 {
     private NetworkVariable<int> lapVar = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    //private NetworkList<int> lapVarList;
+    
     private List<int> lapList = new List<int>();
     private List<int> lapCheck = new List<int>();
     public UnityAction<int> OnLapChanged;
@@ -19,7 +19,7 @@ public class PlayerNetworkLaps : NetworkBehaviour
 
     private void Awake()
     {
-        //lapVarList = new NetworkList<int>(new List<int>(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        
         lapCheck.Add(1);
         lapCheck.Add(2);
         lapCheck.Add(3);

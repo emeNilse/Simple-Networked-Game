@@ -37,13 +37,18 @@ public class Car : NetworkBehaviour
 
         if(IsOwner && Input.GetKeyDown(KeyCode.G))
         {
-            GreetingSound();
+            GreetingSoundClientRpc();
         }
 
         if (IsOwner && Input.GetKeyDown(KeyCode.C))
         {
             Color carColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
             ChangeColourClientRpc(carColor);
+        }
+
+        if (IsOwner && Input.GetKeyDown(KeyCode.I))
+        {
+            TryAndInteractWithNPC();
         }
 
     }
@@ -54,12 +59,29 @@ public class Car : NetworkBehaviour
         transform.rotation = Quaternion.identity;
     }
 
-    void GreetingSound()
+    [Rpc(SendTo.ClientsAndHost)]
+    void GreetingSoundClientRpc()
     {
         myAudio.Play();
     }
-    
-    [Rpc(SendTo.ClientsAndHost)]
+
+    void TryAndInteractWithNPC()
+    {
+
+        Debug.Log("We are the owner of our player pressing I");
+
+        var npcsInScene = FindObjectsByType<NetworkNPC>(FindObjectsSortMode.None);
+
+        if (npcsInScene.Length > 0)
+        {
+            Debug.Log("There is a NPC in the scene");
+            var npcInScene = npcsInScene[0];
+
+            npcInScene.InteractWithNPCServerRpc(NetworkManager.Singleton.LocalClientId);
+        }
+    }
+
+        [Rpc(SendTo.ClientsAndHost)]
     void ChangeColourClientRpc(Color color)
     {
         myRen.material.color = color;

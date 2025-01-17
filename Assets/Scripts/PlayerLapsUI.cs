@@ -36,8 +36,7 @@ public class PlayerLapsUI : MonoBehaviour
                 playerNetworkLaps.OnLapChanged += OnPlayerLapChanged;
             }
         }
-        //playerNetworkLaps = FindAnyObjectByType<PlayerNetworkLaps>();
-        //playerNetworkLaps.OnLapChanged += OnPlayerLapChanged;
+        
         
     }
 
@@ -50,16 +49,11 @@ public class PlayerLapsUI : MonoBehaviour
     {
         if (IsLocalClient(clientId))
         {
-            //NetworkObject playerNetworkObject = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject();
-            //PlayerNetworkLaps playerNetworkLaps = playerNetworkObject.GetComponent<PlayerNetworkLaps>();
-            //if (playerNetworkLaps)
-            //{
-            //    playerNetworkLaps.OnLapChanged -= OnPlayerLapChanged;
-            //}
+            
             OnPlayerLapChanged(-1);
         }
 
-        //playerNetworkLaps.OnLapChanged -= OnPlayerLapChanged;
+        
     }
 
     void OnPlayerLapChanged(int newLapValue)

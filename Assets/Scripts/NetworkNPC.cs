@@ -38,21 +38,7 @@ public class NetworkNPC : NetworkBehaviour
     }
 
 
-    //[ServerRpc(RequireOwnership = false)]
-    //public void InteractiveWithNPCServerRpc(ulong clientID)
-    //{
-    //    Debug.Log("Client with ID" + clientID + "Interacting with NPC");
-    //    HasInteractedWithNPCClientRpc();
-    //}
-
-    //[ClientRpc]
-    //void HasInteractedWithNPCClientRpc()
-    //{
-
-    //}
-
-
-
+    //Keeping this so that I can work on game object movement
 
     //Vector3 startPosition;
     //float freq = 5f;
